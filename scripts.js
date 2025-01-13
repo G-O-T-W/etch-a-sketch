@@ -72,7 +72,7 @@ function resetGrid() {
 
 const sizebtn = document.querySelector("button.sizebtn");
 const resetbtn = document.querySelector("button.resetbtn");
-const sizeOfGrid = parseInt(prompt("Enter the size of the grid: "));
+let sizeOfGrid = parseInt(prompt("Enter the size of the grid: "));
 createGrid(sizeOfGrid);
 
 sizebtn.addEventListener("click", changeGridSize);

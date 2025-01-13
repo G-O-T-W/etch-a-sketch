@@ -55,21 +55,24 @@ function changeGridSize() {
     pixels.forEach((pixel) => {
         sketchspace.removeChild(pixel);
     });
-    // Add new grid
+    // Create a grid of new size 
     sizeOfGrid = parseInt(prompt("Enter the size of the grid: "));
     createGrid(sizeOfGrid);
 }
 
 function resetGrid() {
+    // To erase previous pixel opacity we have to remove div first
     const pixels = document.querySelectorAll("div.pixel");
     pixels.forEach((pixel) => {
-        pixel.style["background-color"] = "white";
+        sketchspace.removeChild(pixel);
     });
+    // create a new grid of same size
+    createGrid(sizeOfGrid);
 }
 
 const sizebtn = document.querySelector("button.sizebtn");
 const resetbtn = document.querySelector("button.resetbtn");
-let sizeOfGrid = parseInt(prompt("Enter the size of the grid: "));
+const sizeOfGrid = parseInt(prompt("Enter the size of the grid: "));
 createGrid(sizeOfGrid);
 
 sizebtn.addEventListener("click", changeGridSize);

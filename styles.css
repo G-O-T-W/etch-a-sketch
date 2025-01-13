@@ -41,12 +41,13 @@ body {
     flex-flow: row wrap;
 }
 
-.pixel {
-    /* width: 219px; */
-    /* flex: 1; */
+.buttons {
+    width: 480px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.resetbtn {
+button {
     border-radius: 50%;
     height: 64px;
     width: 64px;

@@ -31,15 +31,30 @@ function createGrid(num) {
     }  
 }
 
+function changeGridSize() {
+    // Removing previous grid first before adding new one
+    const sketchspace = document.querySelector("div.sketchspace");
+    const pixels = document.querySelectorAll("div.pixel");
+    pixels.forEach((pixel) => {
+        sketchspace.removeChild(pixel);
+    });
+    // Add new grid
+    sizeOfGrid = parseInt(prompt("Enter the size of the grid: "));
+    createGrid(sizeOfGrid);
+}
+
+function resetGrid() {
+    const pixels = document.querySelectorAll("div.pixel");
+    pixels.forEach((pixel) => {
+        pixel.style["background-color"] = "white";
+    });
+}
+
 const sizebtn = document.querySelector("button.sizebtn");
 const resetbtn = document.querySelector("button.resetbtn");
 let sizeOfGrid = parseInt(prompt("Enter the size of the grid: "));
 createGrid(sizeOfGrid);
 
+sizebtn.addEventListener("click", changeGridSize);
 
-resetbtn.addEventListener("click", () => {
-    const pixels = document.querySelectorAll("div.pixel");
-    pixels.forEach((pixel) => {
-        pixel.style["background-color"] = "white";
-    });
-});
+resetbtn.addEventListener("click", resetGrid);

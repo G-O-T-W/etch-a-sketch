@@ -3,13 +3,6 @@ function log(message) {
     console.log(message);
 }
 
-function addListener(pixel) {
-    log(pixel);
-    pixel.addEventListener("mouseover", (e) => {
-        pixel.setAttribute("style", "background-color: black;")
-    });
-}
-
 function createGrid(num) {
     if (!(num < 100)) {
         alert("Grid Size is too large! Keep it below 100.");
@@ -23,12 +16,20 @@ function createGrid(num) {
             pixel.classList.toggle("pixel");
             pixel.setAttribute("style", `height: ${pixelSize}px; 
                                 width: ${pixelSize}px;`);
-            pixel.addEventListener("mouseover", () => {
-                pixel.style["background-color"] = "black";
-            });
+            addListener(pixel);
             sketchspace.appendChild(pixel);
         }
     }  
+}
+
+function addListener(pixel) {
+    pixel.addEventListener("mouseover", () => {
+        // Randomize the color of pixels
+        r_rgb = Math.round(Math.random()*256);
+        b_rgb = Math.round(Math.random()*256);
+        g_rgb = Math.round(Math.random()*256);
+        pixel.style["background-color"] = `rgb(${r_rgb}, ${g_rgb}, ${b_rgb})`;
+    }); 
 }
 
 function changeGridSize() {
@@ -58,3 +59,4 @@ createGrid(sizeOfGrid);
 sizebtn.addEventListener("click", changeGridSize);
 
 resetbtn.addEventListener("click", resetGrid);
+
